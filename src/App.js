@@ -1,7 +1,13 @@
 import React from "react";
 import SimpleSelect from "./Select";
 import axios from "axios";
-
+import Header from "./Header";
+import Planetcard from "./Card";
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
+import Title from './Title'
+import Footer from './Footer'
 export default class Main extends React.Component {
   state = {
     token: "",
@@ -65,24 +71,23 @@ export default class Main extends React.Component {
   };
 
   countVehicles = (value, targetid) => {
+    //   if(targetid==temp.targetid){
+    //   const obj = this.state.vehicles.map(i => {
+    //     const obj = Object.assign({}, i);
+    //     if (obj.name == value) {
+    //       obj.total_no = obj.total_no - 1;
+    //     }
+    //     return obj;
+    //   });
 
-    if(targetid==temp.targetid){
-    const obj = this.state.vehicles.map(i => {
-      const obj = Object.assign({}, i);
-      if (obj.name == value) {
-        obj.total_no = obj.total_no - 1;
-      }
-      return obj;
-    });
+    //   if ((targetid = temp.targetid)) {
+    //     this.setState({
+    //       vehicles1: obj
+    //     });
+    //   }
 
-    if ((targetid = temp.targetid)) {
-      this.setState({
-        vehicles1: obj
-      });
-    }
-  
-  }
-  else{
+    // }
+    // else{
     const obj = this.state.vehicles1.map(i => {
       const obj = Object.assign({}, i);
       if (obj.name == value) {
@@ -93,9 +98,8 @@ export default class Main extends React.Component {
     this.setState({
       vehicles1: obj
     });
-
-  }
-}
+  };
+  // }
 
   componentDidUpdate(previousProps, previousState) {
     console.log(previousState.vehicles1);
@@ -150,45 +154,73 @@ export default class Main extends React.Component {
 
   render() {
     return (
-      <div>
-        <SimpleSelect
-          count={1}
-          name={this.state.planet1}
-          vname={this.state.vehicle1}
-          planets={this.state.planets}
-          addPlanet={this.addPlanetVehicles}
-          countVehicles={this.countVehicles}
-          vehicle={this.state.vehicles1}
+      <React.Fragment>
+        <Header />
+        <Title/>
+        <Container fixed component="main">
+        <Grid container spacing={5} alignItems="flex-end" direction='row'>
+        <Planetcard
+          Component={() => (
+            <SimpleSelect
+              count={1}
+              name={this.state.planet1}
+              vname={this.state.vehicle1}
+              planets={this.state.planets}
+              addPlanet={this.addPlanetVehicles}
+              countVehicles={this.countVehicles}
+              vehicle={this.state.vehicles1}
+            />
+          )}
+          destination={"Destination 1"}
         />
-        <SimpleSelect
-          count={2}
-          name={this.state.planet2}
-          vname={this.state.vehicle2}
-          planets={this.state.planets}
-          addPlanet={this.addPlanetVehicles}
-          countVehicles={this.countVehicles}
-          vehicle={this.state.vehicles1}
+
+        <Planetcard
+          Component={() => (
+            <SimpleSelect
+              count={2}
+              name={this.state.planet2}
+              vname={this.state.vehicle2}
+              planets={this.state.planets}
+              addPlanet={this.addPlanetVehicles}
+              countVehicles={this.countVehicles}
+              vehicle={this.state.vehicles1}
+            />
+          )}
+          destination={"Destination 2"}
         />
-        <SimpleSelect
-          count={3}
-          name={this.state.planet3}
-          vname={this.state.vehicle3}
-          planets={this.state.planets}
-          addPlanet={this.addPlanetVehicles}
-          countVehicles={this.countVehicles}
-          vehicle={this.state.vehicles1}
+        <Planetcard
+          Component={() => (
+            <SimpleSelect
+              count={3}
+              name={this.state.planet3}
+              vname={this.state.vehicle3}
+              planets={this.state.planets}
+              addPlanet={this.addPlanetVehicles}
+              countVehicles={this.countVehicles}
+              vehicle={this.state.vehicles1}
+            />
+          )}
+          destination={"Destination 3"}
         />
-        <SimpleSelect
-          count={4}
-          name={this.state.planet4}
-          vname={this.state.vehicle4}
-          planets={this.state.planets}
-          addPlanet={this.addPlanetVehicles}
-          countVehicles={this.countVehicles}
-          vehicle={this.state.vehicles1}
+        <Planetcard
+          Component={() => (
+            <SimpleSelect
+              count={4}
+              name={this.state.planet4}
+              vname={this.state.vehicle4}
+              planets={this.state.planets}
+              addPlanet={this.addPlanetVehicles}
+              countVehicles={this.countVehicles}
+              vehicle={this.state.vehicles1}
+            />
+          )}
+          destination={"Destination 4"}
         />
+        </Grid>
+        </Container>
         <button onClick={this.handleSubmit}>Submitt</button>
-      </div>
+        <Footer/>
+        </React.Fragment>
     );
   }
 }
