@@ -1,13 +1,13 @@
 import React from "react";
-import SimpleSelect from "./Select";
+import SimpleSelect from "./Components/Select";
 import axios from "axios";
-import Header from "./Header";
-import Planetcard from "./Card";
+import Header from "./Components/Header";
+import PlanetAndVehicleSelector from "./Components/Card";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import Title from './Title'
-import Footer from './Footer'
+import Footer from './Components/Footer'
+import { fetchToken, fetchVehicles, fetchPlanets, } from './services/apiCalls';
 export default class Main extends React.Component {
   state = {
     token: "",
@@ -27,11 +27,7 @@ export default class Main extends React.Component {
     radioCount: 0
   };
   componentDidMount() {
-    axios({
-      method: "post",
-      url: "https://findfalcone.herokuapp.com/token",
-      headers: { Accept: "application/json" }
-    })
+    fetchToken()
       .then(res => {
         console.log(res.data);
         this.setState({
@@ -40,8 +36,7 @@ export default class Main extends React.Component {
       })
       .catch(err => console.log(err));
 
-    axios
-      .get("https://findfalcone.herokuapp.com/planets")
+      fetchPlanets()
       .then(res => {
         console.log(res.data);
         this.setState({
@@ -50,8 +45,7 @@ export default class Main extends React.Component {
       })
       .catch(err => console.log(err));
 
-    axios
-      .get("https://findfalcone.herokuapp.com/vehicles")
+      fetchVehicles()
       .then(res => {
         console.log(res.data);
         this.setState({
@@ -63,8 +57,6 @@ export default class Main extends React.Component {
   }
 
   addPlanetVehicles = (name, value) => {
-    console.log(name);
-    console.log(value);
     this.setState({
       [name]: value
     });
@@ -101,11 +93,11 @@ export default class Main extends React.Component {
   };
   // }
 
-  componentDidUpdate(previousProps, previousState) {
-    console.log(previousState.vehicles1);
-    console.log(this.state.vehicles1);
-    const temp = previousState.vehicles1;
-  }
+  // componentDidUpdate(previousProps, previousState) {
+  //   console.log(previousState.vehicles1);
+  //   console.log(this.state.vehicles1);
+  //   const temp = previousState.vehicles1;
+  // }
 
   handleSubmit = async () => {
     console.log(this.state.planet_names);
@@ -147,24 +139,18 @@ export default class Main extends React.Component {
       .catch(err => console.log(err));
   };
 
-  //   componentDidUpdate(previousProps, previousState) {
-  //     console.log(previousState)
-  //     const temp = previousState
-  // }
-
   render() {
     return (
       <React.Fragment>
         <Header />
-        <Title/>
-        <Container fixed component="main">
+        <Container fixed component="main" style={{marginTop: '200px'}}>
         <Grid container spacing={5} alignItems="flex-end" direction='row'>
-        <Planetcard
+        <PlanetAndVehicleSelector
           Component={() => (
             <SimpleSelect
               count={1}
               name={this.state.planet1}
-              vname={this.state.vehicle1}
+              vehicleName={this.state.vehicle1}
               planets={this.state.planets}
               addPlanet={this.addPlanetVehicles}
               countVehicles={this.countVehicles}
@@ -174,12 +160,12 @@ export default class Main extends React.Component {
           destination={"Destination 1"}
         />
 
-        <Planetcard
+        <PlanetAndVehicleSelector
           Component={() => (
             <SimpleSelect
               count={2}
               name={this.state.planet2}
-              vname={this.state.vehicle2}
+              vehicleName={this.state.vehicle2}
               planets={this.state.planets}
               addPlanet={this.addPlanetVehicles}
               countVehicles={this.countVehicles}
@@ -188,12 +174,12 @@ export default class Main extends React.Component {
           )}
           destination={"Destination 2"}
         />
-        <Planetcard
+        <PlanetAndVehicleSelector
           Component={() => (
             <SimpleSelect
               count={3}
               name={this.state.planet3}
-              vname={this.state.vehicle3}
+              vehicleName={this.state.vehicle3}
               planets={this.state.planets}
               addPlanet={this.addPlanetVehicles}
               countVehicles={this.countVehicles}
@@ -202,12 +188,12 @@ export default class Main extends React.Component {
           )}
           destination={"Destination 3"}
         />
-        <Planetcard
+        <PlanetAndVehicleSelector
           Component={() => (
             <SimpleSelect
               count={4}
               name={this.state.planet4}
-              vname={this.state.vehicle4}
+              vehicleName={this.state.vehicle4}
               planets={this.state.planets}
               addPlanet={this.addPlanetVehicles}
               countVehicles={this.countVehicles}

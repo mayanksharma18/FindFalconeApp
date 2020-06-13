@@ -18,28 +18,28 @@ const styles = theme => ({
     minWidth: 120
   },
   selectEmpty: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing(2)
   }
 });
 
 class SimpleSelect extends React.Component {
+
   handleChange = event => {
-    console.log(event.target.name);
-    const planetname = event.target.value;
-    this.props.addPlanet(event.target.name, planetname);
+    const planetName = event.target.value;
+    this.props.addPlanet(event.target.name, planetName);
   };
+
   handleChange1 = event => {
-    const vehiclename = event.target.value;
-    const targetid = event.target.id;
-    this.props.countVehicles(vehiclename, targetid);
-    console.log(event.target.id);
+    const vehicleName = event.target.value;
+    const targetId = event.target.id;
+    this.props.countVehicles(vehicleName, targetId);
   };
 
   render() {
-    const { classes } = this.props;
-    const distance = this.props.planets.find(i => {
-      if (i.name === this.props.name) {
-        return i.distance;
+    const { classes, planets, name, vehicle } = this.props;
+    const planetDistance = planets.find(obj => {
+      if (obj.name === name) {
+        return obj.distance;
       }
       return null;
     });
@@ -72,25 +72,15 @@ class SimpleSelect extends React.Component {
               onClick={this.handleChange1}
               onChange={this.handleChange}
             >
-              {this.props.vehicle.map(i =>
-                i.max_distance < distance.distance ? (
+              {vehicle.map(obj => (
                   <div>
                     <FormControlLabel
-                      disabled
-                      value={i.name}
+                      disabled={ obj.max_distance < planetDistance.distance }
+                      value={obj.name}
                       control={<Radio />}
-                      label={i.name}
+                      label={obj.name}
                     />
-                    <p>{`(${i.total_no})`}</p>
-                  </div>
-                ) : (
-                  <div>
-                    <FormControlLabel
-                      value={i.name}
-                      control={<Radio />}
-                      label={i.name}
-                    />
-                    {`(${i.total_no})`}
+                    {`(${obj.total_no})`}
                   </div>
                 )
               )}

@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Planetcard({Component,destination}) {
+export default function PlanetAndVehicleSelector({Component,destination}) {
   const classes = useStyles();
   return(
  
@@ -54,10 +54,8 @@ export default function Planetcard({Component,destination}) {
           <Card>
             <CardHeader
               title={destination}
-              //   subheader="ji"
               titleTypographyProps={{ align: "center" }}
               subheaderTypographyProps={{ align: "center" }}
-              //   action={<StarIcon />}
               className={classes.cardHeader}
             />
             <CardContent>
