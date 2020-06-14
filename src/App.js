@@ -56,49 +56,16 @@ export default class Main extends React.Component {
       .catch(err => console.log(err));
   }
 
-  addPlanetVehicles = (name, value) => {
+  addPlanetVehiclesInState = (name, value) => {
     this.setState({
       [name]: value
     });
   };
 
-  countVehicles = (value, targetid) => {
-    //   if(targetid==temp.targetid){
-    //   const obj = this.state.vehicles.map(i => {
-    //     const obj = Object.assign({}, i);
-    //     if (obj.name == value) {
-    //       obj.total_no = obj.total_no - 1;
-    //     }
-    //     return obj;
-    //   });
-
-    //   if ((targetid = temp.targetid)) {
-    //     this.setState({
-    //       vehicles1: obj
-    //     });
-    //   }
-
-    // }
-    // else{
-    const obj = this.state.vehicles1.map(i => {
-      const obj = Object.assign({}, i);
-      if (obj.name == value) {
-        obj.total_no = obj.total_no - 1;
-      }
-      return obj;
-    });
-    this.setState({
-      vehicles1: obj
-    });
+  vehiclesCountInventory = (value, targetid) => {
+    return null
   };
-  // }
-
-  // componentDidUpdate(previousProps, previousState) {
-  //   console.log(previousState.vehicles1);
-  //   console.log(this.state.vehicles1);
-  //   const temp = previousState.vehicles1;
-  // }
-
+  
   handleSubmit = async () => {
     console.log(this.state.planet_names);
     await this.setState({
@@ -152,8 +119,8 @@ export default class Main extends React.Component {
               name={this.state.planet1}
               vehicleName={this.state.vehicle1}
               planets={this.state.planets}
-              addPlanet={this.addPlanetVehicles}
-              countVehicles={this.countVehicles}
+              addPlanetAndVehicle={this.addPlanetVehiclesInState}
+              vehiclesCountInventory={this.vehiclesCountInventory}
               vehicle={this.state.vehicles1}
             />
           )}
@@ -167,8 +134,8 @@ export default class Main extends React.Component {
               name={this.state.planet2}
               vehicleName={this.state.vehicle2}
               planets={this.state.planets}
-              addPlanet={this.addPlanetVehicles}
-              countVehicles={this.countVehicles}
+              addPlanetAndVehicle={this.addPlanetVehiclesInState}
+              vehiclesCountInventory={this.vehiclesCountInventory}
               vehicle={this.state.vehicles1}
             />
           )}
@@ -181,8 +148,8 @@ export default class Main extends React.Component {
               name={this.state.planet3}
               vehicleName={this.state.vehicle3}
               planets={this.state.planets}
-              addPlanet={this.addPlanetVehicles}
-              countVehicles={this.countVehicles}
+              addPlanetAndVehicle={this.addPlanetVehiclesInState}
+              vehiclesCountInventory={this.vehiclesCountInventory}
               vehicle={this.state.vehicles1}
             />
           )}
@@ -195,8 +162,8 @@ export default class Main extends React.Component {
               name={this.state.planet4}
               vehicleName={this.state.vehicle4}
               planets={this.state.planets}
-              addPlanet={this.addPlanetVehicles}
-              countVehicles={this.countVehicles}
+              addPlanetAndVehicle={this.addPlanetVehiclesInState}
+              vehiclesCountInventory={this.vehiclesCountInventory}
               vehicle={this.state.vehicles1}
             />
           )}

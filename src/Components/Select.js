@@ -24,19 +24,19 @@ const styles = theme => ({
 
 class SimpleSelect extends React.Component {
 
-  handleChange = event => {
+  handleChangePlanet = event => {
     const planetName = event.target.value;
-    this.props.addPlanet(event.target.name, planetName);
+    this.props.addPlanetAndVehicle(event.target.name, planetName);
   };
 
-  handleChange1 = event => {
+  handleChangeVehicle = event => {
     const vehicleName = event.target.value;
     const targetId = event.target.id;
-    this.props.countVehicles(vehicleName, targetId);
+    this.props.vehiclesCountInventory(vehicleName, targetId);
   };
 
   render() {
-    const { classes, planets, name, vehicle } = this.props;
+    const { classes, planets, name, vehicle, vehicleName } = this.props;
     const planetDistance = planets.find(obj => {
       if (obj.name === name) {
         return obj.distance;
@@ -47,30 +47,30 @@ class SimpleSelect extends React.Component {
     return (
       <form className={classes.root} autoComplete="off">
         <FormControl className={classes.formControl}>
-          <InputLabel shrink htmlFor="age-label-placeholder">
-            {"select planet"}
+          <InputLabel shrink htmlFor="planet-label-placeholder">
+            {"Select Planet"}
           </InputLabel>
           <Select
             value={this.props.name}
-            onChange={this.handleChange}
+            onChange={this.handleChangePlanet}
             displayEmpty
             name={"planet" + this.props.count}
             className={classes.selectEmpty}
           >
-            {this.props.planets.map(i => (
-              <MenuItem value={i.name}>{i.name}</MenuItem>
+            {planets.map(obj => (
+              <MenuItem value={obj.name}>{obj.name}</MenuItem>
             ))}
           </Select>
         </FormControl>
-        {this.props.name && (
+        {name && (
           <FormControl component="fieldset" className={classes.formControl}>
             <RadioGroup
               id={this.props.count}
               name={"vehicle" + this.props.count}
               className={classes.group}
-              value={this.props.vname}
-              onClick={this.handleChange1}
-              onChange={this.handleChange}
+              value={vehicleName}
+              onClick={this.handleChangeVehicle}
+              onChange={this.handleChangePlanet}
             >
               {vehicle.map(obj => (
                   <div>
