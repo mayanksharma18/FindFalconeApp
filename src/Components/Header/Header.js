@@ -1,45 +1,31 @@
-import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import CssBaseline from "@material-ui/core/CssBaseline";
-// import StarIcon from '@material-ui/icons/StarBorder';
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
-  // '@global': {
-  //   body: {
-  //     backgroundColor: theme.palette.common.white,
-  //   },
-  //   ul: {
-  //     margin: 0,
-  //     padding: 0,
-  //   },
-  //   li: {
-  //     listStyle: 'none',
-  //   },
-  // },
+const useStyles = makeStyles((theme) => ({
   appBar: {
-    borderBottom: `1px solid ${theme.palette.divider}`
+    borderBottom: `1px solid ${theme.palette.divider}`,
   },
   toolbar: {
-    flexWrap: "wrap"
+    flexWrap: 'wrap',
   },
   toolbarTitle: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   link: {
-    margin: theme.spacing(1, 1.5)
-  }
+    margin: theme.spacing(1, 1.5),
+  },
 }));
 
 export default function Header() {
   const classes = useStyles();
   return (
-    <React.Fragment>
+    <>
       <CssBaseline />
       <AppBar
         position="static"
@@ -60,7 +46,7 @@ export default function Header() {
             <Link
               variant="button"
               color="textPrimary"
-              href="#"
+              href="/"
               className={classes.link}
             >
               Reset
@@ -76,6 +62,6 @@ export default function Header() {
           </Button>
         </Toolbar>
       </AppBar>
-    </React.Fragment>
+    </>
   );
 }

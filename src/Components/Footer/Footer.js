@@ -1,12 +1,9 @@
 import React from 'react';
-import Grid from "@material-ui/core/Grid";
-// import StarIcon from '@material-ui/icons/StarBorder';
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 
 function Copyright() {
   return (
@@ -23,7 +20,7 @@ function Copyright() {
     </Typography>
   );
 }
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   '@global': {
     body: {
       backgroundColor: theme.palette.common.white,
@@ -64,7 +61,7 @@ export default function Footer() {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <>
       {/* Footer */}
       <Container maxWidth="md" component="footer" className={classes.footer}>
         <Box mt={5}>
@@ -72,6 +69,6 @@ export default function Footer() {
         </Box>
       </Container>
       {/* End footer */}
-    </React.Fragment>
+    </>
   );
 }

@@ -13,3 +13,7 @@ export function fetchVehicles(){
 export function fetchToken(){
     return ExecuteApiCall('post',`${baseUrl}token`);
 }
+
+export function fetchSearchResults(payload){
+    return ExecuteApiCall('post',`${baseUrl}find`, payload);
+}
