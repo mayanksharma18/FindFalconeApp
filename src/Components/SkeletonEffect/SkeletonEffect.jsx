@@ -4,10 +4,10 @@ import Skeleton from '@material-ui/lab/Skeleton';
 export default function SkeletonEffect() {
   return (
     <div>
-      <Skeleton variant="rect" width={210} height={50} />
+      <Skeleton variant="rect" width={278} height={60} />
       <div
         style={{
-          width: '210px',
+          width: '278px',
           height: '100px',
           backgroundColor: 'lightcyan',
         }}

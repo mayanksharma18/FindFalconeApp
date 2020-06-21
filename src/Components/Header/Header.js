@@ -46,7 +46,7 @@ export default function Header() {
             <Link
               variant="button"
               color="textPrimary"
-              href="/"
+              href="/playgame"
               className={classes.link}
             >
               Reset
