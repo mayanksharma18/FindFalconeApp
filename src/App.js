@@ -5,6 +5,7 @@ import PlayingScreen from './Components/PlayingScreen/PlayingScreen';
 import ResultScreen from './Components/ResultScreen/ResultScreen';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
+import ErrorBoundary from './Components/ErrorBoundary/ErrorBoundary';
 
 const App = () => {
   return (
@@ -12,7 +13,9 @@ const App = () => {
       <Router>
         <Header />
         <Route exact path="/introduction" component={GameStory} />
-        <Route path="/playgame" component={PlayingScreen} />
+        <ErrorBoundary>
+          <Route path="/playgame" component={PlayingScreen} />{' '}
+        </ErrorBoundary>
         <Route path="/results" component={ResultScreen} />
         <Footer />
       </Router>
