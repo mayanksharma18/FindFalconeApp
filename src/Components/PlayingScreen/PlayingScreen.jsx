@@ -99,13 +99,20 @@ class Main extends React.Component {
         });
       })
       .catch((err) => console.log(err));
-    setTimeout(() => this.setState({ isDataLoading: false }), 2000);
+    this.timer = setTimeout(
+      () => this.setState({ isDataLoading: false }),
+      2000
+    );
   }
 
   componentDidUpdate() {
     if (this.state.isButtonDisable) {
       this.isButtonDisable();
     }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
   }
 
   addPlanetVehiclesInState = (name, value) => {

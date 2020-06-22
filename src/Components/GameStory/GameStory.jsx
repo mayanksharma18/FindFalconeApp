@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -7,6 +7,8 @@ import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Fade from '@material-ui/core/Fade';
 import queenImage from '../../assets/images/QueenImage.png';
+import vehiclesSpecsImage from '../../assets/images/VehiclesSpec.png';
+import ImageModal from '../ImageModal/ImageModal';
 
 const useStyles = makeStyles({
   gameStoryContainer: {
@@ -62,7 +64,15 @@ const useStyles = makeStyles({
 });
 
 export default function GameStory() {
+  const [isModalOpen, setModal] = useState(false);
   const classes = useStyles();
+  const handleOpen = () => {
+    setModal(true);
+  };
+  const handleClose = () => {
+    setModal(false);
+  };
+
   return (
     <>
       <CssBaseline />
@@ -114,7 +124,7 @@ export default function GameStory() {
                 className={classes.buttonClass}
                 variant="contained"
                 color="secondary"
-                onClick={() => {}}
+                onClick={() => handleOpen()}
               >
                 See Vehicles specs
               </Button>
@@ -132,6 +142,12 @@ export default function GameStory() {
           </div>
         </Container>
       </Fade>
+      {isModalOpen ? (
+        <ImageModal Open={isModalOpen} Close={() => handleClose()}>
+          <img src={vehiclesSpecsImage} alt="Girl in a jacket" width="1200"
+                height="700" />
+        </ImageModal>
+      ) : null}
     </>
   );
 }

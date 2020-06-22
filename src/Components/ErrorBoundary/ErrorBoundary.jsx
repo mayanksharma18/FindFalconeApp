@@ -1,4 +1,25 @@
 import React from 'react';
+import { CssBaseline, Container, Typography } from '@material-ui/core';
+
+const buttonClass = {
+  borderRadius: '16px',
+  cursor: 'pointer',
+  height: '32px',
+  fontSize: '16px',
+  fontWeight: '500',
+  outline: 'none',
+  padding: '0 24px',
+  textShadow: 'none',
+  background: '#141414',
+  border: '1px solid #141414',
+  color: 'white',
+  marginRight: '32px',
+  textDecoration: 'none',
+  '&:hover': {
+    background: '#2b2b2b',
+    border: '1px solid #2b2b2b',
+  },
+};
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -6,7 +27,7 @@ class ErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError() {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
@@ -14,7 +35,36 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
+      return (
+        <>
+          <CssBaseline />
+          <Container maxWidth="sm" style={{ marginTop: '100px' }}>
+            <Typography
+              variant="h1"
+              component="h2"
+              gutterBottom
+              color="primary"
+            >
+              Sorry.
+            </Typography>
+            <Typography variant="h5" gutterBottom color="primary">
+              Looks like something went wrong on our end
+            </Typography>
+            <Typography variant="h5" gutterBottom color="primary">
+              Head back to the start point
+            </Typography>
+            <div style={{ marginTop: '40px' }}>
+              <button
+                style={buttonClass}
+                type="button"
+                onClick={() => window.location.reload()}
+              >
+                <span>Restart Game</span>
+              </button>
+            </div>
+          </Container>
+        </>
+      );
     }
     return this.props.children;
   }
