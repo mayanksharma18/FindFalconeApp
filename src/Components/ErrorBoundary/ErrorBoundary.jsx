@@ -1,5 +1,6 @@
 import React from 'react';
 import { CssBaseline, Container, Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const buttonClass = {
   borderRadius: '16px',
@@ -54,13 +55,15 @@ class ErrorBoundary extends React.Component {
               Head back to the start point
             </Typography>
             <div style={{ marginTop: '40px' }}>
-              <button
-                style={buttonClass}
-                type="button"
-                onClick={() => window.location.reload()}
-              >
-                <span>Restart Game</span>
-              </button>
+              <Link to="/playgame" style={{ textDecoration: 'none' }}>
+                <button
+                  style={buttonClass}
+                  type="button"
+                  onClick={() => window.location.reload()}
+                >
+                  <span>Restart Game</span>
+                </button>
+              </Link>
             </div>
           </Container>
         </>

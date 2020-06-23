@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { CssBaseline, Container, Typography } from '@material-ui/core';
 
 const buttonClass = {
@@ -78,15 +78,11 @@ const ResultScreen = () => {
         </Container>
         <Container maxWidth="sm" style={{ paddingLeft: '170px' }}>
           <div style={{ marginTop: '40px' }}>
-            <button
-              style={buttonClass}
-              type="button"
-              onClick={() =>
-                window.location.assign(`${window.location.origin}/playgame`)
-              }
-            >
-              <span>Start Again</span>
-            </button>
+            <Link to="/playgame" style={{ textDecoration: 'none' }}>
+              <button style={buttonClass} type="button">
+                <span>Start Again</span>
+              </button>
+            </Link>
           </div>
         </Container>
       </Container>
