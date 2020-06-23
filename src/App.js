@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import GameStory from './Components/GameStory/GameStory';
 import PlayingScreen from './Components/PlayingScreen/PlayingScreen';
 import ResultScreen from './Components/ResultScreen/ResultScreen';
@@ -12,12 +12,14 @@ const App = () => {
     <div>
       <Router>
         <Header />
-        <Route exact path="/" component={GameStory} />
         <Route path="/gamestory" component={GameStory} />
         <ErrorBoundary>
           <Route path="/playgame" component={PlayingScreen} />{' '}
         </ErrorBoundary>
         <Route path="/results" component={ResultScreen} />
+        <Route path="/">
+          <Redirect to="/gamestory" />
+        </Route>
         <Footer />
       </Router>
     </div>
