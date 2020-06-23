@@ -48,7 +48,8 @@ const styles = () => ({
     border: 'solid 1px #111',
   },
 });
-class Main extends React.Component {
+
+class PlayingScreen extends React.Component {
   state = {
     token: '',
     planets: [],
@@ -392,11 +393,13 @@ class Main extends React.Component {
   }
 }
 
-Main.propTypes = {
+PlayingScreen.propTypes = {
   classes: PropTypes.shape({
-    buttonFind: PropTypes.object.isRequired,
-    selectionText: PropTypes.object.isRequired,
+    findButtonContainer: PropTypes.string.isRequired,
+    buttonFind: PropTypes.string.isRequired,
+    selectionText: PropTypes.string.isRequired,
+    timeBox: PropTypes.string.isRequired,
   }).isRequired,
 };
 
-export default withStyles(styles)(Main);
+export default withStyles(styles)(PlayingScreen);

@@ -65,7 +65,7 @@ export default function PlanetAndVehicleSelectorCard({
 }
 
 PlanetAndVehicleSelectorCard.propTypes = {
-  Component: PropTypes.element.isRequired,
+  Component: PropTypes.func.isRequired,
   destination: PropTypes.string.isRequired,
   isDataLoading: PropTypes.bool.isRequired,
 };

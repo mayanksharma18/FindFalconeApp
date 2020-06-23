@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -20,22 +21,29 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ImageModal(props) {
   const classes = useStyles();
+  const { Open, Close, children } = props;
   return (
     <div>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
-        open={props.Open}
-        onClose={props.Close}
+        open={Open}
+        onClose={Close}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
       >
-        <Fade in={props.Open}>{props.children}</Fade>
+        <Fade in={Open}>{children}</Fade>
       </Modal>
     </div>
   );
 }
+
+ImageModal.propTypes = {
+  Open: PropTypes.bool.isRequired,
+  Close: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+};

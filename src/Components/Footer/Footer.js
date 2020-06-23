@@ -1,25 +1,10 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import { blue } from '@material-ui/core/colors';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'. Built with '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Material-UI.
-      </Link>
-    </Typography>
-  );
-}
 const useStyles = makeStyles((theme) => ({
   '@global': {
     body: {
@@ -65,10 +50,30 @@ export default function Footer() {
       {/* Footer */}
       <Container maxWidth="md" component="footer" className={classes.footer}>
         <Box mt={5}>
-          <Copyright />
+          <div
+            style={{
+              marginLeft: '280px',
+              position: 'absolute',
+            }}
+          >
+            <span>
+              Made with
+              <FavoriteIcon
+                style={{ color: blue[500], marginBottom: '-6px' }}
+              />{' '}
+              by{' '}
+              <a
+                style={{ textDecoration: 'none' }}
+                href="https://www.linkedin.com/in/mayank-vikesh-kumar-sharma-73978270/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Mayank Vikesh Kumar Sharma
+              </a>
+            </span>
+          </div>
         </Box>
       </Container>
-      {/* End footer */}
     </>
   );
 }

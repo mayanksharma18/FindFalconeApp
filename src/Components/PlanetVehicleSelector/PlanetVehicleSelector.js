@@ -66,11 +66,13 @@ class PlanetVehicleSelector extends React.Component {
             value={this.props.name}
             onChange={this.handleChangePlanet}
             displayEmpty
-            name={`planet${  this.props.count}`}
+            name={`planet${this.props.count}`}
             className={classes.selectEmpty}
           >
             {planets.map((obj) => (
-              <MenuItem value={obj.name}>{obj.name}</MenuItem>
+              <MenuItem key={obj.name} value={obj.name}>
+                {obj.name}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
@@ -78,7 +80,7 @@ class PlanetVehicleSelector extends React.Component {
           <FormControl component="fieldset" className={classes.formControl}>
             <RadioGroup
               id={this.props.count}
-              name={`vehicle${  count}`}
+              name={`vehicle${count}`}
               className={classes.group}
               value={vehicleName}
               onClick={this.handleChangePlanet}
@@ -86,7 +88,7 @@ class PlanetVehicleSelector extends React.Component {
             >
               {doNotShowRadioButtons
                 ? vehicle.map((obj) => (
-                    <div>
+                    <div key={obj.name}>
                       <FormControlLabel
                         disabled={
                           obj.max_distance < planetDistance.distance ||

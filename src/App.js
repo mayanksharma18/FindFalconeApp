@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import GameStory from './Components/GameStory/GameStory';
 import PlayingScreen from './Components/PlayingScreen/PlayingScreen';
 import ResultScreen from './Components/ResultScreen/ResultScreen';

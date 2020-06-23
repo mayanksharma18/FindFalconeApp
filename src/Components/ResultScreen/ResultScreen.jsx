@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { CssBaseline, Container, Typography } from '@material-ui/core';
 
 const buttonClass = {
@@ -94,7 +93,5 @@ const ResultScreen = () => {
     </>
   );
 };
-
-ResultScreen.propTypes = {};
 
 export default ResultScreen;

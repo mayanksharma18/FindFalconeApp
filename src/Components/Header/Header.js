@@ -1,11 +1,10 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -42,17 +41,17 @@ export default function Header() {
             noWrap
             className={classes.toolbarTitle}
           >
-            Finding Falcone
+            <Link
+              to="/gamestory"
+              style={{ textDecoration: 'none', color: 'black' }}
+            >
+              Finding Falcone
+            </Link>
           </Typography>
           {location.pathname !== '/gamestory' ? (
-            <Link
-              variant="button"
-              color="textPrimary"
-              href="/playgame"
-              className={classes.link}
-            >
+            <Button color="primary" onClick={() => window.location.reload()}>
               Reset
-            </Link>
+            </Button>
           ) : null}
           <Button
             href="https://www.geektrust.in"
